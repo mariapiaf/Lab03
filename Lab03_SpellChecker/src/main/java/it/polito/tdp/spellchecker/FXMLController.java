@@ -68,9 +68,13 @@ public class FXMLController {
     		words.add(s);
     	}
     	long start = System.nanoTime();
-    	List<RichWord> rw = this.model.spellCheckTest(words);
+    	//List<RichWord> rw = this.model.spellCheckTest(words);
+    	//List<RichWord> rwl = this.model.spellCheckTestLinear(words);
+    	List<RichWord> rwd = this.model.spellCheckTestDichotomic(words);
     	long end = System.nanoTime();
-    	txtResult.setText(this.model.toString(rw));
+    	//txtResult.setText(this.model.toString(rw));
+    	//txtResult.setText(this.model.toString(rwl));
+    	txtResult.setText(this.model.toString(rwd));
     	txtErrors.setText("The text contains "+ this.model.getContErrori() + " errors");
     	long tempoImpiegato = end-start;
     	txtTime.setText("Spell check completed in "+ tempoImpiegato +" ns");
